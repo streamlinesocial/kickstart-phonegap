@@ -1,0 +1,12 @@
+{
+  "name": "APP NAME",
+  "private": true,
+  "dependencies": {
+    "ionic": "driftyco/ionic-bower#1.0.0-beta.8",
+    "moment": "moment/moment#2.5.1",
+    "moment-timezone": "moment/moment-timezone#0.0.3"
+  },
+  "example.resolutions": {
+    "angular-ui-router": "0.2.10"
+  }
+}
