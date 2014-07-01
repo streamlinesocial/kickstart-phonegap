@@ -1,3 +1,9 @@
+Overview
+========
+
+This kickstart uses Grunt and Phonegap NPM packages to build an Ionic+AngularJS based app that compiles to iOS and Android. Before starting you'll want to be sure to have the platforms setup that you intend to compile. [See Cordovas reference](http://cordova.apache.org/docs/en/edge/guide_platforms_index.md.html#Platform%20Guides).
+
+
 Getting Started
 ===============
 
