@@ -11,32 +11,35 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-bower-install-simple");
     grunt.loadNpmTasks('grunt-wiredep');
 
-    grunt.registerTask("images", [
-        "svg2storeicons",   // compile app icons from src/svg
-        "phonegapsplash"    // compile app splash screens from src/png
+    grunt.registerTask("build", [
+        "bower",   // install bower assets
+        "sass",    // compile styles
+        "assets"   // compile app splash screens from src/png
+    ]);
+
+    grunt.registerTask("bower", [
+        "bower-install-simple",   // install bower assets
+        "wiredep"                 // add bower asset references html
+    ]);
+
+    grunt.registerTask("assets", [
+        "svg2storeicons",         // compile app icons from src/svg
+        "phonegapsplash"          // compile app splash screens from src/png
     ]);
 
     grunt.registerTask("shipit", [
-        "images",
+        "build",
         "phonegap:build",   // create ios build and android apk (non-release)
         "phonegap:release"  // create android ipk (signed release)
-    ]);
-
-    grunt.registerTask("android", [
-        "phonegap:build:android",
-        "phonegap:run:android"
-    ]);
-
-    grunt.registerTask("ios", [
-        "phonegap:build:ios",
-        "phonegap:run:ios"
     ]);
 
     // for use with phonegap-grunt to automate app builds with phonegap or phonegap-build
     grunt.initConfig({
 
         pkg: grunt.file.readJSON('package.json'),
+
         "bower-install-simple": { options: { color: true, production: false } },
+
         wiredep: { target: { src: [ 'www/index.html' ] } },
 
         clean: [
@@ -54,7 +57,11 @@ module.exports = function(grunt) {
             },
             bower: {
                 files: [ "bower.json" ],
-                tasks: [ "bower-install-simple" ]
+                tasks: [ "bower" ]
+            },
+            assets: {
+                files: [ "app/src/**/*.png", "app/src/**/*.svg" ],
+                tasks: [ "assets" ]
             }
         },
 
