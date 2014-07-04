@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-bower-install-simple");
     grunt.loadNpmTasks('grunt-wiredep');
 
-    grunt.registerTask("build", [
+    grunt.registerTask("prepare", [
         "bower",   // install bower assets
         "sass",    // compile styles
         "assets"   // compile app splash screens from src/png
@@ -31,9 +31,21 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask("shipit", [
-        "build",
+        "prepare",
         "phonegap:build",   // create ios build and android apk (non-release)
         "phonegap:release"  // create android ipk (signed release)
+    ]);
+
+    grunt.registerTask("build:ios", [
+        "prepare",
+        "phonegap:build:ios",
+        "phonegap:run:ios"
+    ]);
+
+    grunt.registerTask("build:android", [
+        "prepare",
+        "phonegap:build:android",
+        "phonegap:run:android"
     ]);
 
     // for use with phonegap-grunt to automate app builds with phonegap or phonegap-build
@@ -109,7 +121,7 @@ module.exports = function(grunt) {
                 releaseName: '<%= pkg.name %>' + '-' + '<%= pkg.version %>',
                 root: 'www',
                 config: {
-                    template: 'app/templates/config.xml',
+                    template: '_config.xml',
                     data: {
                         id: '<%= pkg.appId %>',
                         version: '<%= pkg.version %>',
