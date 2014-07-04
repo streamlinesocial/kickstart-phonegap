@@ -1,5 +1,8 @@
 'use strict';
 
+var path = require('path');
+var spawn = require('child_process').spawn;
+
 module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
@@ -45,6 +48,7 @@ module.exports = function(grunt) {
         clean: [
           "build", "plugins/**", "platforms/**",
           "www/platforms", "www/icon.png",
+          "ionic.project",
           "!.gitkeep",
         ],
 
@@ -203,6 +207,18 @@ module.exports = function(grunt) {
                 // iosStatusBar: 'WhiteAndTransparent'
             }
         }
-    })
+    });
 
+    // task to run the server to the browser using ionic
+    grunt.registerTask('serve', function () {
+        var cmd = path.resolve('./node_modules/.bin', 'ionic');
+        var child = spawn(cmd, ['serve']);
+        child.stdout.on('data', function (data) { grunt.log.writeln(data); });
+        child.stderr.on('data', function (data) { grunt.log.error(data); });
+        process.on('exit', function (code) {
+          child.kill('SIGINT');
+          process.exit(code);
+        });
+        return grunt.task.run(['watch']);
+    });
 };

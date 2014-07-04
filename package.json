@@ -28,7 +28,8 @@
     "grunt-sass": "^0.12.1",
     "grunt-svg2storeicons": "^0.2.2",
     "grunt-wiredep": "^1.8.0",
-    "plugman": "0.22.*"
+    "plugman": "0.22.*",
+    "ionic": "^1.0.14"
   },
   "originalDevDependencies": {
     "grunt-phonegap": "0.15.*"
