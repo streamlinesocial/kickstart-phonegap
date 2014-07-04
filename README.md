@@ -25,6 +25,15 @@ Required for png / svg image functions
     # ubuntu:
     sudo apt-get install graphicsmagick
 
+
+### Config
+
+Before compiling ensure the configs
+
+- .cordova/config.json
+- _config.xml
+- package.json
+
 ### Init
 
     npm install
@@ -35,11 +44,17 @@ Update bower and index.html, regenerates icon, splash and sass in one call
 
     grunt prepare
 
-Individual updates
+### Watch
 
-    grunt bower
-    grunt assets
-    grunt sass
+grunt prepare can be automated on changes of files by using the watch task
+
+    grunt watch
+
+### Serve
+
+Open the app in the browser for earily stage testing
+
+    grunt serve
 
 ### Build
 
