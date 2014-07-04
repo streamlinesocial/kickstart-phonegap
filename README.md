@@ -7,9 +7,26 @@ This kickstart uses Grunt and Phonegap NPM packages to build an Ionic+AngularJS 
 Getting Started
 ===============
 
-### Init
+### Deps
+
+**Grunt & Phonegap**
+
+These want to be globally installed
 
     npm install -g grunt-cli phonegap
+
+**GraphicsMagick**
+
+Required for png / svg image functions
+
+    # mac
+    brew install graphicsmagick
+    
+    # ubuntu:
+    sudo apt-get install graphicsmagick
+
+### Init
+
     npm install
 
 ### Updates
