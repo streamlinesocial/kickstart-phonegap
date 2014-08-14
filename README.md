@@ -1,3 +1,10 @@
+TL;DR (mac)
+===========
+
+    brew install graphicsmagick
+    npm install -g grunt-cli phonegap ionic ios-deploy ios-sim
+    grunt build:ios
+
 Overview
 ========
 

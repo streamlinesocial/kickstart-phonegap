@@ -135,6 +135,7 @@ module.exports = function(grunt) {
                 verbose: false,
                 debuggable: false,
                 plugins: [
+                    'https://github.com/brodysoft/Cordova-SQLitePlugin.git',
                     'https://github.com/phonegap-build/PushPlugin',
                     'org.apache.cordova.statusbar',
                     'org.apache.cordova.console',
